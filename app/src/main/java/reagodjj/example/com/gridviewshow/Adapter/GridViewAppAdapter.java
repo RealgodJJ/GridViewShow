@@ -10,16 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import reagodjj.example.com.gridviewshow.R;
 import reagodjj.example.com.gridviewshow.model.AppInfo;
 
-public class GridViewAdapter extends BaseAdapter {
+public class GridViewAppAdapter extends BaseAdapter {
     private List<AppInfo> appInfoList;
     private Context context;
 
-    public GridViewAdapter(List<AppInfo> appInfoList, Context context) {
+    public GridViewAppAdapter(List<AppInfo> appInfoList, Context context) {
         this.appInfoList = appInfoList;
         this.context = context;
     }
@@ -47,7 +46,7 @@ public class GridViewAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.grid_app_item, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
@@ -62,7 +61,7 @@ public class GridViewAdapter extends BaseAdapter {
         private ImageView ivIcon;
         private TextView tvAppName;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             ivIcon = view.findViewById(R.id.iv_app_icon);
             tvAppName = view.findViewById(R.id.tv_app_name);
         }

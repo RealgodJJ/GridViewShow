@@ -10,7 +10,7 @@ import android.widget.GridView;
 import java.util.ArrayList;
 import java.util.List;
 
-import reagodjj.example.com.gridviewshow.Adapter.GridViewAdapter;
+import reagodjj.example.com.gridviewshow.Adapter.GridViewAppAdapter;
 import reagodjj.example.com.gridviewshow.model.AppInfo;
 
 public class AppActivity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class AppActivity extends AppCompatActivity {
 
         gvApp = findViewById(R.id.gv_app);
 
-        gvApp.setAdapter(new GridViewAdapter(getAppInfoList(), this));
+        gvApp.setAdapter(new GridViewAppAdapter(getAppInfoList(), this));
     }
 
     private List<AppInfo> getAppInfoList() {
