@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.List;
 
 import reagodjj.example.com.gridviewshow.R;
@@ -51,11 +54,16 @@ public class GridViewImageAdapter extends BaseAdapter {
         ImageInfo imageInfo = imageInfoList.get(position);
         viewHolder.tvName.setText(imageInfo.getText());
 
-        if (imageInfo.getBitmap() == null) {
-            viewHolder.ivPicture.setImageResource(R.mipmap.ic_launcher);
-        } else {
-            viewHolder.ivPicture.setImageBitmap(imageInfo.getBitmap());
-        }
+//        if (imageInfo.getBitmap() == null) {
+//            viewHolder.ivPicture.setImageResource(R.mipmap.ic_launcher);
+//        } else {
+//            viewHolder.ivPicture.setImageBitmap(imageInfo.getBitmap());
+//        }
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions = requestOptions.centerCrop().placeholder(R.mipmap.ic_launcher).error(R.mipmap.error)
+                .fallback(R.mipmap.empty);
+
+        Glide.with(context).load(imageInfo.getImagePath()).apply(requestOptions).into(viewHolder.ivPicture);
 
         return convertView;
     }

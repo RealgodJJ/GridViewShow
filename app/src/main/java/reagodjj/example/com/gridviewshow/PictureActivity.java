@@ -24,7 +24,7 @@ public class PictureActivity extends AppCompatActivity {
     private GridView gvPicture;
     private List<String> imagePathList;
     private List<ImageInfo> imageInfoList;
-    private ImageLoadTask imageLoadTask;
+//    private ImageLoadTask imageLoadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +57,8 @@ public class PictureActivity extends AppCompatActivity {
 
         GridViewImageAdapter gridViewImageAdapter = new GridViewImageAdapter(this, imageInfoList);
         gvPicture.setAdapter(gridViewImageAdapter);
-        imageLoadTask = new ImageLoadTask(this, gridViewImageAdapter);
-        imageLoadTask.execute();
+//        imageLoadTask = new ImageLoadTask(gridViewImageAdapter);
+//        imageLoadTask.execute();
     }
 
     private Bitmap getPicture(String path) {
@@ -83,11 +83,9 @@ public class PictureActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     public class ImageLoadTask extends AsyncTask<Void, Void, Void> {
-        private Context context;
         private GridViewImageAdapter gridViewImageAdapter;
 
-        ImageLoadTask(Context context, GridViewImageAdapter gridViewImageAdapter) {
-            this.context = context;
+        ImageLoadTask(GridViewImageAdapter gridViewImageAdapter) {
             this.gridViewImageAdapter = gridViewImageAdapter;
         }
 
